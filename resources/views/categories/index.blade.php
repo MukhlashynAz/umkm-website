@@ -20,10 +20,10 @@
 
         <div class="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-5 lg:px-8">
 
-            {{-- LOGO --}}
+            {{-- LOGO + COMPANY NAME --}}
             <a
                 href="{{ route('home') }}"
-                class="flex items-center gap-3"
+                class="flex min-w-0 items-center gap-3"
             >
 
                 @if ($company?->logo)
@@ -31,21 +31,19 @@
                     <img
                         src="{{ asset('storage/' . $company->logo) }}"
                         alt="{{ $company->company_name ?? 'Company Logo' }}"
-                        class="h-10 w-auto object-contain"
+                        class="h-10 w-10 shrink-0 rounded-lg object-contain"
                     >
 
-                @else
-
-                    <span class="text-lg font-bold tracking-tight">
-                        {{ $company?->company_name ?? 'COMPANY' }}
-                    </span>
-
                 @endif
+
+                <span class="truncate text-sm font-bold tracking-tight text-gray-900 sm:text-base">
+                    {{ $company?->company_name ?? 'COMPANY' }}
+                </span>
 
             </a>
 
 
-            {{-- NAVIGATION --}}
+            {{-- DESKTOP NAVIGATION --}}
             <div class="hidden items-center gap-8 md:flex">
 
                 <a
@@ -79,17 +77,199 @@
             </div>
 
 
-            {{-- ACTION --}}
-            <a
-                href="{{ route('home') }}#contact"
-                class="rounded-full bg-gray-900 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-gray-700"
+            {{-- DESKTOP ACTION --}}
+            <div class="hidden items-center gap-3 md:flex">
+
+                <a
+                    href="{{ route('login') }}"
+                    class="text-sm font-medium text-gray-500 transition hover:text-gray-900"
+                >
+                    Admin
+                </a>
+
+                <a
+                    href="{{ route('home') }}#contact"
+                    class="rounded-full bg-gray-900 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-gray-700"
+                >
+                    Contact
+                </a>
+
+            </div>
+
+
+            {{-- MOBILE MENU BUTTON --}}
+            <button
+                type="button"
+                id="mobile-menu-button"
+                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-gray-200 text-gray-700 transition hover:bg-gray-100 md:hidden"
+                aria-label="Open menu"
+                aria-expanded="false"
             >
-                Contact
-            </a>
+
+                {{-- HAMBURGER --}}
+                <svg
+                    id="mobile-menu-open-icon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.8"
+                    stroke="currentColor"
+                    class="h-5 w-5"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5"
+                    />
+                </svg>
+
+
+                {{-- CLOSE --}}
+                <svg
+                    id="mobile-menu-close-icon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.8"
+                    stroke="currentColor"
+                    class="hidden h-5 w-5"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M6 18L18 6M6 6l12 12"
+                    />
+                </svg>
+
+            </button>
+
+        </div>
+
+
+        {{-- MOBILE MENU --}}
+        <div
+            id="mobile-menu"
+            class="hidden border-t border-gray-100 bg-white md:hidden"
+        >
+
+            <div class="px-5 py-4">
+
+                <div class="flex flex-col">
+
+                    <a
+                        href="{{ route('home') }}"
+                        class="mobile-menu-link border-b border-gray-100 py-4 text-sm font-medium text-gray-700 transition hover:text-gray-900"
+                    >
+                        Home
+                    </a>
+
+                    <a
+                        href="{{ route('categories.index') }}"
+                        class="mobile-menu-link border-b border-gray-100 py-4 text-sm font-semibold text-gray-900"
+                    >
+                        Products
+                    </a>
+
+                    <a
+                        href="{{ route('home') }}#about"
+                        class="mobile-menu-link border-b border-gray-100 py-4 text-sm font-medium text-gray-700 transition hover:text-gray-900"
+                    >
+                        About
+                    </a>
+
+                    <a
+                        href="{{ route('home') }}#contact"
+                        class="mobile-menu-link border-b border-gray-100 py-4 text-sm font-medium text-gray-700 transition hover:text-gray-900"
+                    >
+                        Contact
+                    </a>
+
+                    <a
+                        href="{{ route('login') }}"
+                        class="mobile-menu-link mt-4 flex items-center justify-center rounded-full border border-gray-200 px-5 py-3 text-sm font-semibold text-gray-700 transition hover:bg-gray-100"
+                    >
+                        Admin
+                    </a>
+
+                </div>
+
+            </div>
 
         </div>
 
     </nav>
+
+
+    {{-- ========================================================= --}}
+    {{-- MOBILE NAVBAR SCRIPT --}}
+    {{-- ========================================================= --}}
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            const button = document.getElementById('mobile-menu-button');
+            const menu = document.getElementById('mobile-menu');
+
+            const openIcon = document.getElementById('mobile-menu-open-icon');
+            const closeIcon = document.getElementById('mobile-menu-close-icon');
+
+            const links = document.querySelectorAll('.mobile-menu-link');
+
+
+            if (!button || !menu) {
+                return;
+            }
+
+
+            button.addEventListener('click', function () {
+
+                const isOpen =
+                    button.getAttribute('aria-expanded') === 'true';
+
+
+                if (isOpen) {
+
+                    menu.classList.add('hidden');
+
+                    openIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
+
+                    button.setAttribute('aria-expanded', 'false');
+                    button.setAttribute('aria-label', 'Open menu');
+
+                } else {
+
+                    menu.classList.remove('hidden');
+
+                    openIcon.classList.add('hidden');
+                    closeIcon.classList.remove('hidden');
+
+                    button.setAttribute('aria-expanded', 'true');
+                    button.setAttribute('aria-label', 'Close menu');
+
+                }
+
+            });
+
+
+            links.forEach(function (link) {
+
+                link.addEventListener('click', function () {
+
+                    menu.classList.add('hidden');
+
+                    openIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
+
+                    button.setAttribute('aria-expanded', 'false');
+                    button.setAttribute('aria-label', 'Open menu');
+
+                });
+
+            });
+
+        });
+    </script>
 
 
     {{-- ========================================================= --}}
