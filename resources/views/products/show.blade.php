@@ -1,10 +1,13 @@
 @php
     $whatsappNumber = $company?->phone
         ? preg_replace('/^0/', '62', preg_replace('/\D/', '', $company->phone))
-        : '6285381780108';
+        : '';
 
-    $whatsappMessage = 'Halo, saya tertarik untuk memesan produk ' . $product->name . '.';
-    $whatsappUrl = 'https://wa.me/' . $whatsappNumber . '?text=' . urlencode($whatsappMessage);
+    $whatsappMessage = 'Halo, saya tertarik untuk memesan produk ' . $product->name . '. Mohon informasi lebih lanjut mengenai ketersediaan dan pemesanannya.';
+
+    $whatsappUrl = $whatsappNumber
+        ? 'https://wa.me/' . $whatsappNumber . '?text=' . urlencode($whatsappMessage)
+        : '#';
 
     $instagram = $company?->instagram ?? '';
 
@@ -17,7 +20,7 @@
     $email = $company?->email ?? '';
 
     $emailSubject = 'Order Produk - ' . $product->name;
-    $emailBody = 'Halo, saya tertarik untuk memesan produk ' . $product->name . '.';
+    $emailBody = 'Halo, saya tertarik untuk memesan produk ' . $product->name . '. Mohon informasi lebih lanjut mengenai ketersediaan dan pemesanannya.';
 
     $emailUrl = $email
         ? 'mailto:' . $email
@@ -142,14 +145,26 @@
                         <div class="mt-5 grid gap-3 sm:grid-cols-3">
 
                             {{-- WHATSAPP --}}
-                            <a
-                                href="{{ $whatsappUrl }}"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                class="flex items-center justify-center rounded-2xl bg-[#25D366] px-5 py-4 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#20bd5a]"
-                            >
-                                WhatsApp
-                            </a>
+                            @if ($whatsappNumber)
+
+                                <a
+                                    href="{{ $whatsappUrl }}"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="flex items-center justify-center rounded-2xl bg-[#25D366] px-5 py-4 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#20bd5a]"
+                                >
+                                    WhatsApp
+                                </a>
+
+                            @else
+
+                                <span
+                                    class="flex cursor-not-allowed items-center justify-center rounded-2xl bg-gray-100 px-5 py-4 text-sm font-semibold text-gray-400"
+                                >
+                                    WhatsApp
+                                </span>
+
+                            @endif
 
 
                             {{-- INSTAGRAM --}}
