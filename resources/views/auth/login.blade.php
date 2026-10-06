@@ -17,8 +17,8 @@
 
         @else
 
-            <div class="flex h-20 w-20 items-center justify-center rounded-2xl bg-gray-100 px-2 text-center">
-                <span class="text-xs font-bold leading-tight text-gray-500">
+            <div class="flex h-20 w-20 items-center justify-center rounded-2xl bg-brand-yellow/30 px-2 text-center">
+                <span class="text-xs font-bold leading-tight text-brand-brown">
                     {{ $company?->company_name ?? 'COMPANY' }}
                 </span>
             </div>
@@ -31,7 +31,9 @@
     {{-- LOGIN HEADER --}}
     <div class="mb-8 text-center">
 
-        <h1 class="text-2xl font-semibold tracking-tight text-gray-900">
+        <div class="mx-auto mb-5 h-1 w-10 rounded-full bg-brand-yellow"></div>
+
+        <h1 class="text-2xl font-semibold tracking-tight text-brand-brown">
             Admin Login
         </h1>
 
@@ -42,29 +44,31 @@
     </div>
 
 
-    <!-- Session Status -->
+    {{-- SESSION STATUS --}}
     <x-auth-session-status
-        class="mb-4"
+        class="mb-5 rounded-xl bg-brand-green/5 px-4 py-3 text-sm text-brand-green"
         :status="session('status')"
     />
 
 
-    <form method="POST" action="{{ route('login') }}">
+    {{-- LOGIN FORM --}}
+    <form method="POST" action="{{ route('login') }}" class="space-y-5">
 
         @csrf
 
 
-        <!-- Email -->
+        {{-- EMAIL --}}
         <div>
 
             <x-input-label
                 for="email"
                 :value="__('Email Address')"
+                class="text-sm font-medium text-gray-700"
             />
 
             <x-text-input
                 id="email"
-                class="block mt-1 w-full"
+                class="mt-2 block w-full rounded-xl border-gray-200 px-4 py-3 shadow-sm focus:border-brand-green focus:ring-brand-green"
                 type="email"
                 name="email"
                 :value="old('email')"
@@ -82,17 +86,18 @@
         </div>
 
 
-        <!-- Password -->
-        <div class="mt-5">
+        {{-- PASSWORD --}}
+        <div>
 
             <x-input-label
                 for="password"
                 :value="__('Password')"
+                class="text-sm font-medium text-gray-700"
             />
 
             <x-text-input
                 id="password"
-                class="block mt-1 w-full"
+                class="mt-2 block w-full rounded-xl border-gray-200 px-4 py-3 shadow-sm focus:border-brand-green focus:ring-brand-green"
                 type="password"
                 name="password"
                 required
@@ -108,8 +113,8 @@
         </div>
 
 
-        <!-- Remember Me -->
-        <div class="mt-5">
+        {{-- REMEMBER ME --}}
+        <div>
 
             <label
                 for="remember_me"
@@ -119,7 +124,7 @@
                 <input
                     id="remember_me"
                     type="checkbox"
-                    class="rounded border-gray-300 text-gray-900 shadow-sm focus:ring-gray-400"
+                    class="rounded border-gray-300 text-brand-green shadow-sm focus:ring-brand-green"
                     name="remember"
                 >
 
@@ -132,23 +137,26 @@
         </div>
 
 
-        <!-- Actions -->
-        <div class="mt-6">
+        {{-- SIGN IN --}}
+        <div>
 
-            <x-primary-button class="w-full justify-center py-3">
+            <x-primary-button
+                class="w-full justify-center rounded-xl bg-brand-green px-5 py-3 text-sm font-semibold text-white transition duration-200 hover:bg-brand-brown focus:bg-brand-brown active:bg-brand-brown"
+            >
                 {{ __('Sign In') }}
             </x-primary-button>
 
         </div>
 
 
+        {{-- FORGOT PASSWORD --}}
         @if (Route::has('password.request'))
 
-            <div class="mt-5 text-center">
+            <div class="text-center">
 
                 <a
                     href="{{ route('password.request') }}"
-                    class="text-sm text-gray-500 transition hover:text-gray-900"
+                    class="text-sm font-medium text-gray-500 transition hover:text-brand-green"
                 >
                     Forgot your password?
                 </a>
@@ -160,12 +168,12 @@
     </form>
 
 
-    <!-- Back to Website -->
+    {{-- BACK TO WEBSITE --}}
     <div class="mt-6 border-t border-gray-100 pt-5 text-center">
 
         <a
             href="{{ route('home') }}"
-            class="inline-flex items-center gap-2 text-sm font-medium text-gray-500 transition hover:text-gray-900"
+            class="inline-flex items-center gap-2 text-sm font-medium text-gray-500 transition hover:text-brand-green"
         >
             <span aria-hidden="true">←</span>
             Back to Website

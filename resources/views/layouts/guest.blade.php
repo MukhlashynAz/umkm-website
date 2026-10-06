@@ -16,7 +16,7 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Fonts -->
+    {{-- FONTS --}}
     <link rel="preconnect" href="https://fonts.bunny.net">
 
     <link
@@ -24,7 +24,7 @@
         rel="stylesheet"
     >
 
-    <!-- Scripts -->
+    {{-- SCRIPTS --}}
     @vite([
         'resources/css/app.css',
         'resources/js/app.js'
@@ -33,15 +33,11 @@
 
 <body class="font-sans text-gray-900 antialiased">
 
-    <div
-        class="flex min-h-screen items-center justify-center bg-gray-50 px-5 py-10"
-    >
+    <div class="flex min-h-screen items-center justify-center bg-gray-50 px-5 py-10">
 
         <div class="w-full sm:max-w-md">
 
-            <div
-                class="overflow-hidden rounded-2xl border border-gray-100 bg-white px-6 py-8 shadow-sm sm:px-8"
-            >
+            <div class="overflow-hidden rounded-2xl border border-gray-100 bg-white px-6 py-8 shadow-sm sm:px-8">
 
                 {{ $slot }}
 

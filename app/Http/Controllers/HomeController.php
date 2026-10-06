@@ -9,18 +9,27 @@ use App\Models\Product;
 class HomeController extends Controller
 {
     public function index()
-    {
-        $company = CompanyProfile::first();
-        $categories = Category::with('products')
-            ->get();
-        $products = Product::where('is_active', true)
-            ->latest()
-            ->get();
+{
+    $company = CompanyProfile::first();
 
-        return view('home', compact(
-            'company',
-            'categories',
-            'products'
-        ));
+    $categories = Category::with('products')
+        ->get();
+
+    $products = Product::with('category')
+        ->where('is_active', true)
+        ->latest()
+        ->get();
+
+    $featuredProducts = Product::with('category')
+        ->where('is_active', true)
+        ->latest()
+        ->get();
+
+    return view('home', compact(
+        'company',
+        'categories',
+        'products',
+        'featuredProducts'
+    ));
     }
 }
