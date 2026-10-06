@@ -1151,7 +1151,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                                 <a
                                     href="mailto:{{ $company->email }}"
-                                    class="mt-2 block break-all text-lg font-medium text-white transition hover:text-brand-yellow"
+                                    class="mt-2 block break-all text-lg font-medium text-white transition hover:text-brand-yellow sm:text-lg"
                                 >
                                     {{ $company->email }}
                                 </a>
@@ -1174,7 +1174,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                     href="{{ $instagramUrl }}"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="mt-2 block text-lg font-medium text-white transition hover:text-brand-yellow"
+                                    class="mt-2 block text-lg font-medium text-white transition hover:text-brand-yellow sm:text-lg"
                                 >
                                     {{ $company->instagram }}
                                 </a>
@@ -1193,7 +1193,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                     Address
                                 </p>
 
-                                <p class="mt-2 text-base leading-7 text-white/75">
+                                <p class="mt-2 text-base leading-7 text-white/75 sm:text-lg">
                                     {{ $company->address }}
                                 </p>
 
