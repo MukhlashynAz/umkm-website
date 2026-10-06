@@ -8,17 +8,7 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    {{-- FAVICON --}}
-    @if ($companyProfile && $companyProfile->logo)
-        <link rel="icon" type="image/png" href="{{ asset('storage/' . $companyProfile->logo) }}">
-    @endif
-
-    {{-- FONTS --}}
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link
-        href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap"
-        rel="stylesheet"
-    />
+    <x-favicon />
 
     {{-- SCRIPTS --}}
     @vite([

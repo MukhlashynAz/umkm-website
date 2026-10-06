@@ -24,6 +24,8 @@
         rel="stylesheet"
     >
 
+    <x-favicon />
+
     {{-- SCRIPTS --}}
     @vite([
         'resources/css/app.css',

@@ -8,6 +8,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <title>Manage Categories</title>
+    <x-favicon />
 </head>
 
 <body class="bg-gray-50 text-gray-900">

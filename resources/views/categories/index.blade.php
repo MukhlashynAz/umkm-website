@@ -8,6 +8,9 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <title>Product Categories{{ $company?->company_name ? ' — ' . $company->company_name : '' }}</title>
+
+    <x-favicon />
+    
 </head>
 
 <body class="bg-white text-gray-900 antialiased">

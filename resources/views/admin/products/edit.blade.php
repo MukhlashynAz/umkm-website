@@ -8,6 +8,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <title>Edit Product</title>
+    <x-favicon />
 </head>
 
 <body class="bg-gray-50 text-gray-900 antialiased">

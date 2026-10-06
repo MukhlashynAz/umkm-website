@@ -10,13 +10,7 @@
 
     <title>{{ $company?->company_name ?? 'Company' }}</title>
 
-    {{-- FAVICON --}}
-    @if ($company?->logo)
-        <link
-            rel="icon"
-            href="{{ asset('storage/' . $company->logo) }}"
-        >
-    @endif
+    <x-favicon />
 
 </head>
 

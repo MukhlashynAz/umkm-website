@@ -11,6 +11,7 @@
         {{ $category->name }}
         — Products
     </title>
+    <x-favicon />
 </head>
 
 @php

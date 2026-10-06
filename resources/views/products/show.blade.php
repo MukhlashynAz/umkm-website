@@ -49,6 +49,7 @@
         {{ $product->name }}
         | {{ $company?->company_name ?? 'Product' }}
     </title>
+    <x-favicon />
 </head>
 
 <body class="bg-white text-gray-900">

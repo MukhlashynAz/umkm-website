@@ -8,6 +8,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <title>Admin Dashboard</title>
+    <x-favicon />
 </head>
 
 <body class="min-h-screen bg-gray-50 text-gray-900 antialiased">
