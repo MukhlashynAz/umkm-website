@@ -288,17 +288,16 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 
-
 {{-- ========================================================= --}}
 {{-- CATEGORY HERO --}}
 {{-- ========================================================= --}}
 
 <section class="bg-brand-yellow/20">
 
-    <div class="mx-auto max-w-7xl px-6 py-12 lg:px-8 lg:py-16">
+    <div class="mx-auto max-w-7xl px-6 py-10 lg:px-8 lg:py-14">
 
         {{-- BREADCRUMB --}}
-        <div class="mb-8 flex items-center gap-2 text-xs sm:text-sm">
+        <div class="mb-6 flex items-center gap-2 text-xs sm:text-sm">
 
             <a
                 href="{{ route('categories.index') }}"
@@ -318,7 +317,8 @@ document.addEventListener('DOMContentLoaded', function () {
         </div>
 
 
-        <div class="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
+        {{-- HERO --}}
+        <div class="grid items-center gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:gap-12">
 
             {{-- LEFT --}}
             <div>
@@ -341,14 +341,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 @if ($category->description)
 
-                    <p class="mt-5 max-w-2xl text-sm leading-7 text-brand-brown/70 sm:text-base">
+                    <p class="mt-4 max-w-2xl text-sm leading-7 text-brand-brown/70 sm:text-base">
                         {{ $category->description }}
                     </p>
 
                 @endif
 
 
-                <div class="mt-6">
+                <div class="mt-5">
 
                     <span class="inline-flex rounded-full bg-white px-4 py-2 text-xs font-semibold text-brand-brown shadow-sm">
 
@@ -364,9 +364,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
             {{-- RIGHT --}}
-            <div>
+            <div class="flex justify-center lg:justify-end">
 
-                <div class="relative aspect-[4/3] overflow-hidden rounded-[2rem] border border-brand-yellow/50 bg-white shadow-sm">
+                <div class="relative h-[180px] w-full max-w-sm overflow-hidden rounded-2xl bg-brand-brown/10 sm:h-[220px]">
 
                     @if ($category->image)
 
@@ -382,7 +382,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                             <div class="text-center">
 
-                                <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-brand-yellow text-brand-brown">
+                                <div class="mx-auto flex h-11 w-11 items-center justify-center rounded-full bg-brand-yellow text-brand-brown">
                                     →
                                 </div>
 
