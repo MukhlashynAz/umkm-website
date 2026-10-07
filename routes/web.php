@@ -8,6 +8,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CategoryProductController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
+use App\Models\CompanyProfile;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
 
@@ -26,6 +28,17 @@ Route::get('/categories', [CategoryController::class, 'index'])
 
 Route::get('/categories/{slug}/products', [CategoryProductController::class, 'index'])
     ->name('categories.products');
+
+Route::get('/about', function () {
+    $company = CompanyProfile::first();
+
+    $backgroundProduct = Product::where('is_active', true)
+        ->whereNotNull('image')
+        ->inRandomOrder()
+        ->first();
+
+    return view('about', compact('company', 'backgroundProduct'));
+})->name('about');
 
 
 // =========================

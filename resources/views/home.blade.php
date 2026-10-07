@@ -102,7 +102,7 @@
             </a>
 
             <a
-                href="#about"
+                href="{{ route('about') }}"
                 class="text-sm font-medium text-gray-600 transition hover:text-brand-green"
             >
                 About
@@ -210,7 +210,7 @@
                 </a>
 
                 <a
-                    href="#about"
+                    href="{{ route('about') }}"
                     class="mobile-menu-link border-b border-gray-100 py-4 text-sm font-medium text-gray-700 transition hover:text-brand-green"
                 >
                     About
@@ -336,12 +336,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 <h1 class="mt-3 text-3xl font-bold leading-[1.05] tracking-tight text-brand-brown sm:text-4xl lg:text-5xl">
 
-                    Quality Products.
+                    Premium Authentic
 
                     <br>
 
                     <span class="text-brand-green">
-                        Reliable Solutions.
+                        Indonesian Crackers
                     </span>
 
                 </h1>
