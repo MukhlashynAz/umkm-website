@@ -3,22 +3,25 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    @vite([
+        'resources/css/app.css',
+        'resources/js/app.js'
+    ])
 
     <title>
         {{ $company?->company_name ?? 'About Us' }}
     </title>
 
-    {{-- FAVICON --}}
-    @if ($company?->logo)
-        <link
-            rel="icon"
-            href="{{ asset('storage/' . $company->logo) }}"
-        >
-    @endif
+    <x-favicon />
+
 </head>
 
 
@@ -134,6 +137,7 @@
                     d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5"
                 />
             </svg>
+
 
             <svg
                 id="mobile-menu-close-icon"
@@ -258,6 +262,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     });
 
+
     links.forEach(function (link) {
 
         link.addEventListener('click', function () {
@@ -282,25 +287,7 @@ document.addEventListener('DOMContentLoaded', function () {
 {{-- HERO --}}
 {{-- ========================================================= --}}
 
-<section class="relative isolate overflow-hidden bg-brand-yellow/20">
-
-    {{-- RANDOM PRODUCT BACKGROUND --}}
-    @if ($backgroundProduct?->image)
-
-        <div class="absolute inset-0 -z-20 overflow-hidden">
-
-            <img
-                src="{{ asset('storage/' . $backgroundProduct->image) }}"
-                alt=""
-                class="h-full w-full scale-110 object-cover blur-[40px]"
-            >
-
-        </div>
-
-        <div class="absolute inset-0 -z-10 bg-brand-yellow/80"></div>
-
-    @endif
-
+<section class="bg-brand-yellow/20">
 
     <div class="mx-auto max-w-7xl px-6 py-12 lg:px-8 lg:py-16">
 
@@ -316,13 +303,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
             @endif
 
+
             <p class="mt-6 text-[11px] font-semibold uppercase tracking-[0.3em] text-brand-green">
                 About Us
             </p>
 
+
             <h1 class="mt-3 text-3xl font-bold leading-tight tracking-tight text-brand-brown sm:text-4xl lg:text-5xl">
                 {{ $company?->company_name ?? 'Our Company' }}
             </h1>
+
 
             <div class="mt-4 h-1 w-10 rounded-full bg-brand-yellow"></div>
 
@@ -337,40 +327,45 @@ document.addEventListener('DOMContentLoaded', function () {
 {{-- WHO WE ARE --}}
 {{-- ========================================================= --}}
 
-<section class="bg-brand-yellow/20">
+<section class="bg-brand-brown">
 
     <div class="mx-auto max-w-7xl px-6 py-16 lg:px-8 lg:py-20">
 
         <div class="max-w-3xl">
 
-            <p class="text-xs font-semibold uppercase tracking-[0.3em] text-brand-green">
+            <p class="text-xs font-semibold uppercase tracking-[0.3em] text-brand-yellow">
                 Who We Are
             </p>
 
-            <h2 class="mt-3 text-2xl font-bold tracking-tight text-brand-brown sm:text-3xl">
+
+            <h2 class="mt-3 text-2xl font-bold tracking-tight text-white sm:text-3xl">
                 Rooted in Indonesia. Focused on the world.
             </h2>
 
-            <p class="mt-4 text-sm leading-7 text-gray-600 sm:text-base">
+
+            <p class="mt-4 text-sm leading-7 text-white/75 sm:text-base">
                 {{ $company?->description ?? 'We are committed to providing quality Indonesian crackers and building trusted relationships with buyers around the world.' }}
             </p>
 
         </div>
 
 
-        {{-- THREE POINTS --}}
-        <div class="mt-10 flex gap-4 overflow-x-auto pb-3 snap-x snap-mandatory lg:overflow-visible">
+        {{-- THREE CORE POINTS --}}
+        <div class="mt-10 grid gap-4 lg:grid-cols-3">
 
-            {{-- 01 --}}
-            <div class="min-w-[245px] flex-1 snap-start rounded-2xl border border-brand-brown/10 bg-white p-5 shadow-sm">
+
+            {{-- INDONESIAN ORIGIN --}}
+            <div class="rounded-2xl bg-white p-5 shadow-sm">
 
                 <div class="flex h-9 w-9 items-center justify-center rounded-full bg-brand-yellow text-xs font-bold text-brand-brown">
                     01
                 </div>
 
+
                 <h3 class="mt-4 text-base font-semibold tracking-tight text-brand-brown">
                     Indonesian Origin
                 </h3>
+
 
                 <p class="mt-3 text-xs leading-6 text-gray-600">
                     Products rooted in the food culture and crackers tradition of Palembang, South Sumatera, Indonesia.
@@ -379,16 +374,18 @@ document.addEventListener('DOMContentLoaded', function () {
             </div>
 
 
-            {{-- 02 --}}
-            <div class="min-w-[245px] flex-1 snap-start rounded-2xl border border-brand-brown/10 bg-white p-5 shadow-sm">
+            {{-- FOCUSED PORTFOLIO --}}
+            <div class="rounded-2xl bg-white p-5 shadow-sm">
 
                 <div class="flex h-9 w-9 items-center justify-center rounded-full bg-brand-yellow text-xs font-bold text-brand-brown">
                     02
                 </div>
 
+
                 <h3 class="mt-4 text-base font-semibold tracking-tight text-brand-brown">
                     Focused Portfolio
                 </h3>
+
 
                 <p class="mt-3 text-xs leading-6 text-gray-600">
                     A concise range of five signature products that is easy for buyers to review and compare.
@@ -397,16 +394,18 @@ document.addEventListener('DOMContentLoaded', function () {
             </div>
 
 
-            {{-- 03 --}}
-            <div class="min-w-[245px] flex-1 snap-start rounded-2xl border border-brand-brown/10 bg-white p-5 shadow-sm">
+            {{-- GLOBAL ORIENTATION --}}
+            <div class="rounded-2xl bg-white p-5 shadow-sm">
 
                 <div class="flex h-9 w-9 items-center justify-center rounded-full bg-brand-yellow text-xs font-bold text-brand-brown">
                     03
                 </div>
 
+
                 <h3 class="mt-4 text-base font-semibold tracking-tight text-brand-brown">
                     Global Orientation
                 </h3>
+
 
                 <p class="mt-3 text-xs leading-6 text-gray-600">
                     Clear English-Language presentation and direct channels for international commercial enquiries.
@@ -422,20 +421,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 {{-- ========================================================= --}}
-{{-- VISION --}}
+{{-- OUR VISION --}}
 {{-- ========================================================= --}}
 
-<section class="bg-brand-brown">
+<section class="bg-brand-yellow/20">
 
     <div class="mx-auto max-w-7xl px-6 py-16 lg:px-8 lg:py-20">
 
         <div class="max-w-4xl">
 
-            <p class="text-xs font-semibold uppercase tracking-[0.3em] text-brand-yellow">
+            <p class="text-xs font-semibold uppercase tracking-[0.3em] text-brand-green">
                 Our Vision
             </p>
 
-            <blockquote class="mt-5 max-w-4xl text-xl font-semibold tracking-tight leading-relaxed text-white sm:text-2xl lg:text-3xl">
+
+            <blockquote class="mt-5 max-w-4xl text-xl font-medium leading-relaxed text-brand-brown sm:text-2xl lg:text-3xl">
                 “To become trusted Indonesian crackers partner for buyers around the world, bringing authentic Indonesian taste to international markets.”
             </blockquote>
 
@@ -447,39 +447,43 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 {{-- ========================================================= --}}
-{{-- MISSION --}}
+{{-- OUR MISSION --}}
 {{-- ========================================================= --}}
 
-<section class="bg-brand-yellow/20">
+<section class="bg-brand-brown">
 
     <div class="mx-auto max-w-7xl px-6 py-16 lg:px-8 lg:py-20">
 
         <div class="max-w-3xl">
 
-            <p class="text-xs font-semibold uppercase tracking-[0.3em] text-brand-green">
+            <p class="text-xs font-semibold uppercase tracking-[0.3em] text-brand-yellow">
                 Our Mission
             </p>
 
-            <h2 class="mt-3 text-2xl font-bold tracking-tight text-brand-brown sm:text-3xl">
+
+            <h2 class="mt-3 text-2xl font-bold tracking-tight text-white sm:text-3xl">
                 What we are committed to.
             </h2>
 
         </div>
 
 
+        {{-- MISSION CARDS --}}
         <div class="mt-10 grid gap-4 sm:grid-cols-2">
 
 
             {{-- 01 --}}
-            <div class="rounded-2xl border border-brand-brown/10 bg-white p-6 shadow-sm">
+            <div class="rounded-2xl bg-white p-6 shadow-sm">
 
                 <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-green">
                     01
                 </p>
 
+
                 <h3 class="mt-3 text-lg font-semibold tracking-tight text-brand-brown">
                     Bring Authenticity
                 </h3>
+
 
                 <p class="mt-3 text-sm leading-6 text-gray-600">
                     Present Indonesian cracker products with a strong sense of origin and identity.
@@ -489,15 +493,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
             {{-- 02 --}}
-            <div class="rounded-2xl border border-brand-brown/10 bg-white p-6 shadow-sm">
+            <div class="rounded-2xl bg-white p-6 shadow-sm">
 
                 <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-green">
                     02
                 </p>
 
+
                 <h3 class="mt-3 text-lg font-semibold tracking-tight text-brand-brown">
                     Serve Buyers Clearly
                 </h3>
+
 
                 <p class="mt-3 text-sm leading-6 text-gray-600">
                     Make product information, communication, and commercial enquiries simple and professional.
@@ -507,15 +513,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
             {{-- 03 --}}
-            <div class="rounded-2xl border border-brand-brown/10 bg-white p-6 shadow-sm">
+            <div class="rounded-2xl bg-white p-6 shadow-sm">
 
                 <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-green">
                     03
                 </p>
 
+
                 <h3 class="mt-3 text-lg font-semibold tracking-tight text-brand-brown">
                     Build Long-Term Trust
                 </h3>
+
 
                 <p class="mt-3 text-sm leading-6 text-gray-600">
                     Develop reliable relationship with importers, distributors, and business partners.
@@ -525,15 +533,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
             {{-- 04 --}}
-            <div class="rounded-2xl border border-brand-brown/10 bg-white p-6 shadow-sm">
+            <div class="rounded-2xl bg-white p-6 shadow-sm">
 
                 <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-green">
                     04
                 </p>
 
+
                 <h3 class="mt-3 text-lg font-semibold tracking-tight text-brand-brown">
                     Grow Internationally
                 </h3>
+
 
                 <p class="mt-3 text-sm leading-6 text-gray-600">
                     Introduce a distinctive Indonesian product portfolio to more markets around the world.
@@ -568,7 +578,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
             @endif
 
-            <p class="text-xs text-brand-brown/70">
+
+            <p class="text-xs text-brand-brown/60">
                 &copy; {{ date('Y') }}
                 {{ $company?->company_name ?? 'Company' }}.
                 All rights reserved.
@@ -579,7 +590,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         <a
             href="{{ route('login') }}"
-            class="text-xs font-medium text-brand-brown transition hover:text-brand-green"
+            class="text-xs font-medium text-brand-brown/60 transition hover:text-brand-green"
         >
             Admin
         </a>

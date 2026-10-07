@@ -61,9 +61,8 @@
 
 <body class="bg-white text-gray-900 antialiased">
 
-
 {{-- ========================================================= --}}
-{{-- PRODUCT HERO --}}
+{{-- PRODUCT DETAIL --}}
 {{-- ========================================================= --}}
 
 <section class="bg-brand-yellow/20">
@@ -76,35 +75,39 @@
             {{-- PRODUCT IMAGE --}}
             <div>
 
-                <div class="relative aspect-square overflow-hidden rounded-[2rem] border border-brand-yellow/50 bg-white shadow-sm">
+                <div class="mx-auto w-full max-w-xl overflow-hidden rounded-[2rem] border border-brand-yellow/50 bg-brand-yellow/10 shadow-sm">
 
-                    @if ($product->image)
+                    <div class="flex h-[300px] items-center justify-center sm:h-[380px] lg:h-[440px]">
 
-                        <img
-                            src="{{ asset('storage/' . $product->image) }}"
-                            alt="{{ $product->name }}"
-                            class="h-full w-full object-cover transition duration-700 hover:scale-105"
-                        >
+                        @if ($product->image)
 
-                    @else
+                            <img
+                                src="{{ asset('storage/' . $product->image) }}"
+                                alt="{{ $product->name }}"
+                                class="h-full w-full object-contain p-6 sm:p-8"
+                            >
 
-                        <div class="flex h-full w-full items-center justify-center bg-brand-yellow/10">
+                        @else
 
-                            <div class="text-center">
+                            <div class="flex h-full w-full items-center justify-center">
 
-                                <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-brand-yellow text-brand-brown">
-                                    →
+                                <div class="text-center">
+
+                                    <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-brand-yellow text-brand-brown">
+                                        →
+                                    </div>
+
+                                    <p class="mt-3 text-xs font-semibold uppercase tracking-[0.2em] text-brand-brown/50">
+                                        Product Image
+                                    </p>
+
                                 </div>
-
-                                <p class="mt-3 text-xs font-semibold uppercase tracking-[0.2em] text-brand-brown/50">
-                                    Product Image
-                                </p>
 
                             </div>
 
-                        </div>
+                        @endif
 
-                    @endif
+                    </div>
 
                 </div>
 
@@ -273,6 +276,7 @@
     </div>
 
 </section>
+
 
 </body>
 
